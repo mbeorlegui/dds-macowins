@@ -1,0 +1,6 @@
+#Ignoro todo lo generado por IntelliJ
+.idea
+# Ignoro el archivo .iml raro
+Prueba1.iml
+# Ignoro la carpeta target
+target

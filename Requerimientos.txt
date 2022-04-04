@@ -1,0 +1,11 @@
+Requerimientos:
+
+- Saber tipo y precio de una prenda.
+- El precio debe ser determinado por un precio "base" modificado por el estado, que puede ser:
+  * Nueva (no modifica el precio)
+  * Promoción (resta valor predefinido)
+  * Liquidación (50% menos).
+- Registrar ventas y ganancias de un determinado día.
+- Las ventas se registran con: prendas que se vendieron, cantidad y fecha.
+- Las ventas pueden ser en efectivo o con tarjeta. Si es con tarjeta, hay un recargo:
+  * cantidad de cuotas * un coeficiente fijo + 0.01 del valor de cada prenda
