@@ -36,6 +36,28 @@ efectivo o con tarjeta. En el caso que sea con tarjeta, tienen el mismo comporta
 modifica el precio), sólo que se le aplica un recargo según la cantidad de cuotas seleccionadas
 (cantidad de cuotas * un coeficiente fijo + 0.01 del valor de cada prenda).”
 
+---
+
+# Resolucion
+
+## Código
+
+El código utilizado se puede encontrar [aquí](src/main/java/domain/ropa/)
+
+## Requirimientos
+
+- Saber tipo y precio de una prenda.
+- El precio debe ser determinado por un precio "base" modificado por el estado, que puede ser:
+  * Nueva (no modifica el precio)
+  * Promoción (resta valor predefinido)
+  * Liquidación (50% menos).
+- Registrar ventas y ganancias de un determinado día.
+- Las ventas se registran con: prendas que se vendieron, cantidad y fecha.
+- Las ventas pueden ser en efectivo o con tarjeta. Si es con tarjeta, hay un recargo:
+  * cantidad de cuotas * un coeficiente fijo + 0.01 del valor de cada prenda
+
 ## Diagrama de Clases
 
-TODO
+![Diagrama UML](DiagramaUML.png)
+
+El códico utilizado para el diagrama UML se puede encontrar [aquí](DiagramaDeObjetos.puml)

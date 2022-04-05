@@ -43,4 +43,26 @@ abstract class Venta {
     return this.prendasVendidas.size();
   }
 
+  private String imprimirPrendas() {
+    String str = "";
+    for (Prenda unaPrenda : this.prendasVendidas) {
+      str += unaPrenda.toString() + "\n";
+    }
+    return str;
+  }
+
+  // Sirve para hacer la diferenciacion de las ventas de un mismo dia,
+  // que necesitará el local en cuestión
+  public boolean esVentaDelDia(LocalDate dia) {
+    return this.getFecha().equals(dia);
+  }
+
+  // El metodo toString muestra la informacion referida al objeto,
+  // con el decorador override hacemos que se muestre de una forma mas amigable (y menos fea)
+  @Override
+  public String toString() {
+    return String.format("VENTA\nFecha: %s\nCantidad: %d\nTotal: %s\nPrendas:\n%s",
+        this.fecha, this.cantidadVendida(), this.totalVenta(), this.imprimirPrendas());
+  }
+
 }

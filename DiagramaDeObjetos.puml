@@ -1,0 +1,68 @@
+@startuml Macowins
+
+class Prenda {
+  precioBase : double
+  estado : Estado
+  double precioFinal()
+  TipoPrenda tipo()
+  void cambiarEstado(Estado nuevoEstado)
+}
+
+enum TipoPrenda {
+  SACO, CAMISA, PANTALON
+}
+
+interface Estado {
+  double precioFinal(double precioBase)
+}
+
+class Nuevo {
+  double precioFinal(double precioBase)
+}
+
+class Promocion {
+  descuento : double
+  double precioFinal(double precioBase)
+}
+
+class Liquidacion {
+  double precioFinal(double precioBase)
+}
+
+abstract Venta {
+  fecha : LocalDate
+  prendasVendidas : List<Prenda>
+
+  double aplicarRecargo()
+  int cantidadVendida()
+  void agregarPrenda(Prenda p)
+}
+
+class VentaEnEfectivo {
+  double aplicarRecargo()  
+}
+
+class VentaConTarjeta {
+  cuotas : int
+  coeficienteFijo : double
+  double aplicarRecargo()
+}
+
+class Negocio {
+  ventas : List<Venta>
+  void agregarVenta(Venta v)
+  double gananciaDeUnDia(LocalDate unDia)
+}
+
+
+Estado <|.. Nuevo
+Estado <|.. Promocion
+Estado <|.. Liquidacion
+Prenda o-- Estado
+Prenda --> TipoPrenda
+Venta <|-- VentaEnEfectivo
+Venta <|-- VentaConTarjeta
+Venta o-- Prenda
+Negocio o-- Venta
+
+@enduml
