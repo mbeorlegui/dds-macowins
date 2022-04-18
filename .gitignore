@@ -1,11 +1,9 @@
-<<<<<<< HEAD
-#Ignoro todo lo generado por IntelliJ
+# Ignoro todo lo generado por IntelliJ
 .idea
 # Ignoro el archivo .iml raro
 Prueba1.iml
 # Ignoro la carpeta target
 target
-=======
 # Compiled class file
 *.class
 
@@ -36,4 +34,4 @@ target/**
 # IJ files
 *.iml
 .idea/**
->>>>>>> 85a58608f13514e13ed11c3c6b0d92d00612bbd6
+
