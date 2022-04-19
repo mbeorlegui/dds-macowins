@@ -44,11 +44,7 @@ abstract class Venta {
   }
 
   private String imprimirPrendas() {
-    String str = "";
-    for (Prenda unaPrenda : this.prendasVendidas) {
-      str += unaPrenda.toString() + "\n";
-    }
-    return str;
+    return String.join(" ", this.prendasVendidas.toString());
   }
 
   // Sirve para hacer la diferenciacion de las ventas de un mismo dia,
@@ -61,7 +57,7 @@ abstract class Venta {
   // con el decorador override hacemos que se muestre de una forma mas amigable (y menos fea)
   @Override
   public String toString() {
-    return String.format("VENTA\nFecha: %s\nCantidad: %d\nTotal: %s\nPrendas:\n%s",
+    return String.format("VENTA%nFecha: %s%nCantidad: %d%nTotal: %s%nPrendas:%n%s",
         this.fecha, this.cantidadVendida(), this.totalVenta(), this.imprimirPrendas());
   }
 

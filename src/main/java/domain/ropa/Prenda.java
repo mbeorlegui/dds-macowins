@@ -1,7 +1,7 @@
 package domain.ropa;
 
 public class Prenda {
-  private String nombre;
+  // private String nombre;
   private TipoPrenda tipo;
   private double precioBase;
   private Estado estado;

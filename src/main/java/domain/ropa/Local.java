@@ -23,17 +23,12 @@ public class Local {
   }
 
   private String ventasDeUnDia(LocalDate unDia) {
-    String s = "";
-    for (Venta v : this.ventas) {
-      if (v.esVentaDelDia(unDia)) {
-        s += v.toString();
-      }
-    }
-    return s;
+    String ventasDelDia = this.ventas.stream().filter(venta -> venta.esVentaDelDia(unDia)).toString();
+    return String.join(" ", ventasDelDia);
   }
 
   public void imprimirVentasDeUnDia(LocalDate unDia) {
-    System.out.printf("REGISTRO DEL DIA %s\nGanancia total: %s\nDetalle:\n%s%n",
+    System.out.printf("REGISTRO DEL DIA %s%nGanancia total: %s%nDetalle:%n%s%n",
         unDia, this.gananciaDeUnDia(unDia), this.ventasDeUnDia(unDia));
   }
 
