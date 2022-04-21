@@ -38,29 +38,7 @@ modifica el precio), sólo que se le aplica un recargo según la cantidad de cuo
 
 ---
 
-# Resolucion
-
-## Código
-
-El código utilizado se puede encontrar [aquí](src/main/java/domain/ropa/)
-
-## Requirimientos
-
-- Saber tipo y precio de una prenda.
-- El precio debe ser determinado por un precio "base" modificado por el estado, que puede ser:
-    * Nueva (no modifica el precio)
-    * Promoción (resta valor predefinido)
-    * Liquidación (50% menos).
-- Registrar ventas y ganancias de un determinado día.
-- Las ventas se registran con: prendas que se vendieron, cantidad y fecha.
-- Las ventas pueden ser en efectivo o con tarjeta. Si es con tarjeta, hay un recargo:
-    * cantidad de cuotas * un coeficiente fijo + 0.01 del valor de cada prenda
-
-## Diagrama de Clases
-
-![Diagrama UML](DiagramaUML.png)
-
-El códico utilizado para el diagrama UML se puede encontrar [aquí](DiagramaDeObjetos.puml)
+## Lineamientos de entrega del trabajo
 
 * Java 8. :warning: Si bien el proyecto no lo limita explícitamente, el comando `mvn verify` no funcionará con versiones
   mas modernas de Java.
@@ -113,3 +91,30 @@ explicada en el punto anterior. Se recomienda hacerlo de la siguiente forma:
 ```
 mvn clean verify && git tag entrega-final && git push origin HEAD --tags
 ```
+
+-----
+
+# Resolución
+
+## Código
+
+El código utilizado se puede encontrar [aquí](src/main/java/domain/ropa/)
+
+## Requirimientos
+
+- Saber tipo y precio de una prenda.
+- El precio debe ser determinado por un precio "base" modificado por el estado, que puede ser:
+    * Nueva (no modifica el precio)
+    * Promoción (resta valor predefinido)
+    * Liquidación (50% menos).
+- Registrar ventas y ganancias de un determinado día.
+- Las ventas se registran con: prendas que se vendieron, cantidad y fecha.
+- Las ventas pueden ser en efectivo o con tarjeta. Si es con tarjeta, hay un recargo:
+    * cantidad de cuotas * un coeficiente fijo + 0.01 del valor de cada prenda
+      El códico utilizado para el diagrama UML se puede encontrar [aquí](DiagramaDeObjetos.puml)
+
+## Diagrama de Clases
+
+![Diagrama UML](DiagramaUML.png)
+
+
