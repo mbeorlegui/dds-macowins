@@ -3,17 +3,11 @@ package domain.ropa;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MisTests {
-
-
-  @DisplayName("Test de pruebe que siempre va a pasar")
-  @Test
-  public void testDePrueba() {
-    assertTrue(true);
-  }
 
   @DisplayName("Ventas en efectivo no aplican recargo")
   @Test
@@ -68,12 +62,42 @@ public class MisTests {
     assertEquals(pantalonEnPromocion(1500, 100).precioFinal(), 1400, 0);
   }
 
+  @DisplayName("Al agregar una venta al local, la ganancia del dia es la de esa venta")
+  @Test
+  public void alAgregarUnaVentaAlLocalLaGananciaDelDiaEsEsaVenta() {
+    Local unLocalConVenta = nuevoLocal();
+    unLocalConVenta.agregarVenta(nuevaVentaEnEfectivoConPrenda());
+
+    assertEquals(
+        unLocalConVenta.gananciaDeUnDia(LocalDate.now()),
+        nuevaVentaEnEfectivoConPrenda().totalVenta()
+    );
+  }
+
+  @DisplayName("Al agregar varias ventas al local, la ganancia del dia es las de esas ventas")
+  @Test
+  public void alAgregarVariasVentasAlLocalLaGananciaDelDiaSonLasDeEsasVentas() {
+    Local unLocalConVenta = nuevoLocal();
+    unLocalConVenta.agregarVenta(nuevaVentaEnEfectivoConPrenda());
+    unLocalConVenta.agregarVenta(nuevaVentaEnEfectivoConPrenda());
+    unLocalConVenta.agregarVenta(nuevaVentaConTarjetaConPrenda());
+    unLocalConVenta.agregarVenta(nuevaVentaConTarjetaConPrenda());
+
+    assertEquals(
+        unLocalConVenta.gananciaDeUnDia(LocalDate.now()),
+        nuevaVentaEnEfectivoConPrenda().totalVenta() +
+            nuevaVentaEnEfectivoConPrenda().totalVenta() +
+            nuevaVentaConTarjetaConPrenda().totalVenta() +
+            nuevaVentaConTarjetaConPrenda().totalVenta()
+
+    );
+  }
+
 
   @DisplayName("Instanciar: Pantalon en promocion")
   private Prenda pantalonEnPromocion(int precioBase, int descuento) {
     return new Prenda(TipoPrenda.PANTALON, new Promocion(descuento), precioBase);
   }
-
 
   @DisplayName("Instanciar: Camisa nueva")
   private Prenda camisaNueva(double precioBase) {
@@ -90,5 +114,18 @@ public class MisTests {
     return new Local();
   }
 
+  @DisplayName("Instanciar: Nueva Venta con Tarjeta con prenda")
+  private VentaConTarjeta nuevaVentaConTarjetaConPrenda() {
+    VentaConTarjeta ventaConTarjeta = new VentaConTarjeta(10, 12);
+    ventaConTarjeta.agregarPrenda(sacoEnLiquidacion(100));
+    return ventaConTarjeta;
+  }
+
+  @DisplayName("Instanciar: Nueva Venta en Efectivo con prenda")
+  private VentaEnEfectivo nuevaVentaEnEfectivoConPrenda() {
+    VentaEnEfectivo ventaEnEfectivo = new VentaEnEfectivo();
+    ventaEnEfectivo.agregarPrenda(camisaNueva(100));
+    return ventaEnEfectivo;
+  }
 
 }

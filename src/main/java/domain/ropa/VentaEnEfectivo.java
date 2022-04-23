@@ -5,9 +5,5 @@ public class VentaEnEfectivo extends Venta {
     super();
   }
 
-  @Override
-  protected double aplicarRecargo(double totalBase) {
-    return totalBase;
-  }
-  // Si la venta es en efectivo, no se aplica recargo
+
 }

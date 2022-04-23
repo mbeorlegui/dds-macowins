@@ -8,8 +8,8 @@ public class Local {
 
   private List<Venta> ventas = new ArrayList<Venta>();
 
-  public void agregarVenta(Venta v) {
-    this.ventas.add(v);
+  public void agregarVenta(Venta unaVenta) {
+    this.ventas.add(unaVenta);
   }
 
   public double gananciaDeUnDia(LocalDate unDia) {

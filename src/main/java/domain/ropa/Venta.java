@@ -14,7 +14,9 @@ abstract class Venta {
     this.fecha = LocalDate.now();
   }
 
-  abstract double aplicarRecargo(double totalBase);
+  protected double aplicarRecargo(double totalBase) {
+    return totalBase;
+  }
 
   public double totalVenta() {
     double valorPrendas = 0;
